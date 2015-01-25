@@ -1,8 +1,3 @@
-##use later for scoring models
-library(pROC)
-score <- auc(y_test_resp, y_test_pred)
-
-
 ##Download the data
 setwd("~/Desktop/Kaggle/Predicting Titanic Survivors")
 fileUrl_train <- "https://kaggle2.blob.core.windows.net/competitions-data/kaggle/3136/train.csv?sv=2012-02-12&se=2015-01-08T02%3A54%3A57Z&sr=b&sp=r&sig=8H11bbsaj9DQDMQ0R5WIQq9NIrLirih29FC7eW6Viqs%3D"
@@ -23,7 +18,7 @@ train$Survived<-as.factor(train$Survived)
 train<-train[,-c(4,11)]
 test<-test[,-c(3,10)]
 
-##impute missing values--haven't tried this yet
+##impute missing values
 library("caret", lib.loc="/Library/Frameworks/R.framework/Versions/3.1/Resources/library")
 train.imputed <- rfImpute(Survived ~ ., train)
 test.imputed <- rfImpute(Pclass ~ ., test)
